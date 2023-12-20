@@ -5,9 +5,7 @@ buttons.forEach(item=>{
 let text = item.querySelector('a[data-qaid="name"]').textContent.trim()
     if (array.indexOf(text)>-1){
       console.log(text)
-        let econome = item.querySelector('button[class="button__root--3jTtv button__fullWidth--1Zscq button__sizeSmall--1zL1d ButtonSwitcher__button--N8Gme"]').click();
-         setTimeout(()=>500)
-        document.querySelector('button[class="button__root--3jTtv button__themePurple--imvWD"]').click();
+                let obichnii = item.querySelector('div[class="ek-grid ek-grid_divider-indent-x_xxs ek-grid_divider_black-500 ek-grid_wrap_nowrap ek-grid_align_justify"]').querySelector('div:nth-child(3)').querySelector('button[class="button__root--3jTtv button__fullWidth--1Zscq button__sizeSmall--1zL1d ButtonSwitcher__button--N8Gme"]').click();
     }
     
 })
