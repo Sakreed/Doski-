@@ -1,0 +1,4 @@
+let buttons = document.querySelectorAll('button[class="button__root--3jTtv button__fullWidth--1Zscq button__sizeSmall--1zL1d ButtonSwitcher__button--N8Gme"][data-qaid="disable"]')
+buttons.forEach(item=>{
+    setTimeout((item=>{item.click(),1000})   
+})
