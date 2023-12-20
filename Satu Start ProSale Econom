@@ -1,15 +1,13 @@
 let buttons = document.querySelectorAll('tr[data-qaid="campaign"][class="CommonTable__row--2BOtB"]')
 //Задаем названия компаний в массиве для запуска ЭКОНОМА
-let array=['Адаптер котла']
+let array=[]
 buttons.forEach(item=>{
 let text = item.querySelector('a[data-qaid="name"]').textContent.trim()
     if (array.indexOf(text)>-1){
       console.log(text)
         let econome = item.querySelector('button[class="button__root--3jTtv button__fullWidth--1Zscq button__sizeSmall--1zL1d ButtonSwitcher__button--N8Gme"]').click();
-         setTimeout(starter,1000)
+         setTimeout(()=>500)
+        document.querySelector('button[class="button__root--3jTtv button__themePurple--imvWD"]').click();
     }
     
 })
-function starter(){
-    document.querySelector('button[class="button__root--3jTtv button__themePurple--imvWD"]').click();
-}
