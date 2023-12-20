@@ -1,5 +1,5 @@
 let buttons = document.querySelectorAll('tr[data-qaid="campaign"][class="CommonTable__row--2BOtB"]')
-//Задаем названия компаний в массиве для запуска ЭКОНОМА
+//Задаем названия компаний в массиве для запуска ОБЫЧНОГО РЕЖИМА
 let array=[]
 buttons.forEach(item=>{
 let text = item.querySelector('a[data-qaid="name"]').textContent.trim()
