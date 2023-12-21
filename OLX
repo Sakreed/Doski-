@@ -1,1 +1,25 @@
+// Найти все элементы списка товаров
+const productItems = document.querySelectorAll('.css-tovibg');
 
+// Инициализировать переменные для хранения общего числа просмотров, лайков и просмотров контактов
+let totalViews = 0;
+let totalLikes = 0;
+let totalContactViews = 0;
+
+// Перебрать каждый товар и получить информацию о просмотрах, лайках и просмотрах контактов
+productItems.forEach(item => {
+  // Найти элементы с информацией о просмотрах, лайках и просмотрах контактов внутри каждого товара
+  const views = parseInt(item.querySelector('li:nth-child(1)').textContent);
+  const likes = parseInt(item.querySelector('li:nth-child(2)').textContent);
+  const contactViews = parseInt(item.querySelector('li:nth-child(3)').textContent);
+
+  // Добавить значения к общему числу просмотров, лайков и просмотров контактов
+  totalViews += views;
+  totalLikes += likes;
+  totalContactViews += contactViews;
+});
+
+// Вывести общее число просмотров, лайков и просмотров контактов в консоль
+console.log('Общее число просмотров: ' + totalViews);
+console.log('Общее число лайков: ' + totalLikes);
+console.log('Общее число просмотров контактов: ' + totalContactViews);
