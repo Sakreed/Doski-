@@ -1,0 +1,6 @@
+let names=document.querySelectorAll('td[class="CommonTable__cell--P+y4M CommonTable__cell_padding-lr_20--G+7fl CommonTable__cell_valign_middle--4TX2V"]')
+let array=[]
+names.forEach(open=>{
+    let y=open.querySelector('a').textContent
+    console.log(y)
+})
