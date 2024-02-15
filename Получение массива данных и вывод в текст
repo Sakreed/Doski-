@@ -1,0 +1,11 @@
+let stack=document.querySelectorAll('li[class="il-info"]')
+var a = document.createElement("a");
+let array =[]
+stack.forEach(form=>{
+    array.push('\n'+form.querySelector('div[class="name"]').textContent)
+    array.push(form.querySelector('div[class="flex mt5"]').querySelector('span:nth-child(2)').textContent)
+    array.push(form.querySelector('div[class="flex mt5"]').querySelector('span:nth-child(3)').textContent)
+})
+a.href = window.URL.createObjectURL(new Blob([array], {type: "text/plain"}));
+a.download = "demo.txt";
+a.click();
