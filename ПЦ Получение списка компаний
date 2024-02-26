@@ -1,0 +1,5 @@
+let items =document.querySelectorAll('div[class="companies-list-popup-item"]')
+items.forEach(ssilka=>{
+    let a=ssilka.querySelector('a').getAttribute('href')
+    console.log(a)
+})
