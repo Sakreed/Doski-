@@ -1,0 +1,25 @@
+// Получаем все элементы с классом 'region-popup__item'
+let elements = document.querySelectorAll('.region-popup__item');
+
+// Создаем пустой массив для хранения городов и ссылок
+let cities = [];
+
+// Проходим по каждому элементу и извлекаем текст и ссылку
+elements.forEach(element => {
+    // Находим вложенный элемент <a>
+    let linkElement = element.querySelector('.region-popup__link');
+    // Извлекаем текст города
+    let cityName = linkElement.querySelector('.region-popup__name').textContent.trim();
+    // Извлекаем ссылку на город
+    let cityLink = linkElement.getAttribute('href');
+    
+    // Добавляем город и ссылку в массив. добавляем звездочку, чтобы могли разбить по столбцам
+    cities.push(cityName +'✯'+ cityLink)
+})
+//заменяем разделитель запятую на перенос строки
+let result = cities.join('\n')
+// Выводим список городов в файл
+var a = document.createElement("a");
+a.href = window.URL.createObjectURL(new Blob([result], {type: "text/plain"}));
+a.download = "demo.txt";
+a.click();
