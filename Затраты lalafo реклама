@@ -1,0 +1,15 @@
+let elements = document.querySelectorAll('.css-7s8c2')
+let mounth = 0
+let paid = 0
+elements.forEach(element=>{
+                                                                                     //меняем префикс месяц год
+    if (element.querySelector('p:nth-child(3)').textContent.replace(/^[^ ]+\s/, '')=='фев 2024'){
+        
+   if (parseFloat(element.querySelector('p:nth-child(4)').textContent)<0){
+      paid = paid + parseFloat(element.querySelector('p:nth-child(4)').textContent)
+    }   
+    
+ }
+
+}) 
+console.log(paid)
