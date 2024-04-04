@@ -1,0 +1,13 @@
+let items = document.querySelectorAll('div[class="index prodbig"')
+let array=[]
+items.forEach(item=>{
+    let url = "https://unvan.az/"+item.querySelector('a').getAttribute('href')
+    let title = item.querySelector('a').getAttribute('title')
+    array.push(title +'✯'+ url)
+})
+let result = array.join('\n')
+// Выводим список городов в файл
+var a = document.createElement("a");
+a.href = window.URL.createObjectURL(new Blob([result], {type: "text/plain"}));
+a.download = "demo.txt";
+a.click();
