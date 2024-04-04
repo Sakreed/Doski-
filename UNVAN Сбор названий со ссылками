@@ -1,7 +1,7 @@
 let items = document.querySelectorAll('div[class="index prodbig"')
 let array=[]
 items.forEach(item=>{
-    let url = "https://unvan.az/"+item.querySelector('a').getAttribute('href')
+    let url = "https://unvan.az"+item.querySelector('a').getAttribute('href')
     let title = item.querySelector('a').getAttribute('title')
     array.push(title +'✯'+ url)
 })
