@@ -1,0 +1,7 @@
+//открыть товары по 50 на странице и собраться каждую страницу
+let items = document.querySelectorAll('div[class="u-ads__list__item__content__block_stat"]')
+let a = 0
+items.forEach(item=>{
+a = a + parseFloat(item.querySelector('span:nth-child(4)').querySelector('b').querySelector('font').querySelector('font').textContent)
+})
+console.log(a)
