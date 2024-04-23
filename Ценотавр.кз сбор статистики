@@ -1,0 +1,11 @@
+let items = document.querySelectorAll('rect')
+var a = document.createElement("a");
+let array = []
+const regex = /`(\d{2}.\d{2}.\d{4})`,(\d+)/
+items.forEach(item=>{
+   let match = item.getAttribute('ontouchstart').match(regex)
+    array.push('\n'+match[1]+' '+match[2])
+})
+a.href = window.URL.createObjectURL(new Blob([array], {type: "text/plain"}));
+a.download = "demo.txt";
+a.click();
