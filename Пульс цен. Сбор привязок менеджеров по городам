@@ -1,0 +1,14 @@
+let items = document.querySelectorAll('div[class="company-users-form__block js-st-row"]')
+let array=[]
+items.forEach(item=>{
+    let n = '';
+n = (item.querySelector('a').textContent.replace(/\n/g, '').replace('      ','').replace('    ',''))
+    let element = item.querySelector('div[class="company-user-bindings__bindings-list js-binded-items"]')
+    if (element) {
+        let a =element.querySelectorAll('div[class="company-user-bindings__choosen-binding js-item"]')
+        a.forEach(ler=>{
+            n = n+('✯'+ler.textContent.replace(/\n/g, '').replace('            ','').replace('                        ',''))
+        })
+    } array.push(n)
+    })
+console.dir(array)
