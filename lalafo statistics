@@ -1,3 +1,50 @@
+async function fetchCallData(dateStart, dateEnd,authorization,userHash) {
+    const url = `https://lalafo.kg/api/user-csm-analytics/v3/user-analytics/series?date_start=${dateStart}&date_end=${dateEnd}&measurement=contacts`;
+    
+    const response = await fetch(url, {
+        headers: {
+    "accept": "application/json, text/plain, */*",
+    "authorization": `Bearer ${authorization}`,
+    "country-id": "12",
+    "device": "pc",
+    "experiment": "novalue",
+    "if-none-match": "W/\"3f5-yHPdQ23GEIWPZOK3JCgnAw31OhY\"",
+    "priority": "u=1, i",
+    "request-id": "react-client_5bd205dc-3aef-4ae4-937c-7cb6c5fef98f",
+    "sec-ch-ua": "\"Chromium\";v=\"124\", \"Google Chrome\";v=\"124\", \"Not-A.Brand\";v=\"99\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "same-origin",
+    "user-hash": userHash
+        },
+        referrer: "https://lalafo.kg/account/efficiency",
+        referrerPolicy: "strict-origin-when-cross-origin",
+        method: "GET",
+        mode: "cors",
+        credentials: "include"
+    });
+    
+    const data = await response.json();
+    return data;
+}
+
+function sumCalls(data) {
+    let totalCalls = 0;
+    if (data.series && Array.isArray(data.series)) {
+        data.series.forEach(item => {
+            if (item.values && Array.isArray(item.values)) {
+                item.values.forEach(value => {
+                    if (value.type === 'call') {
+                        totalCalls += value.value;
+                    }
+                });
+            }
+        });
+    }
+    return totalCalls;
+}
 function countBraces(str) {
     var count = 0;
     for (var i = 0; i < str.length; i++) {
@@ -32,4 +79,12 @@ var jsonfile = joining(stringWithoutLastPart,braceCount,braceCountZ)
 var jsonReady = JSON.parse(jsonfile)
 var userEventHash = jsonReady.props.initialState.user.userEventHash
 var token = jsonReady.props.initialState.user.profile.token
-console.log(userEventHash+''+token)
+async function main() {
+    const dateStart = '2024-05-22';
+    const dateEnd = '2024-05-28';
+    const data = await fetchCallData(dateStart, dateEnd,authorization,userHash);
+    const totalCalls = sumCalls(data);
+    console.log(`Total calls from ${dateStart} to ${dateEnd}: ${totalCalls}`);
+}
+
+main();
