@@ -61,20 +61,29 @@ function countBracesZ(str) {
     }
     return count;
 }
-function joining (str,braceCount,braceCountZ){
-    let y = str
-    for(var i=0; i<(braceCount - braceCountZ);i++) {
-        y = y+'}'
+function joining(str, braceCount, braceCountZ) {
+    if (braceCount !== braceCountZ) {
+        // Добавляем недостающие скобки
+        while (braceCount !== braceCountZ) {
+            str += '}';
+            braceCountZ++;
+        }
+        return str;
+    } else {
+        return str;
     }
-    return y
 }
+
 var myString = document.querySelector("#__NEXT_DATA__").textContent;
 var braceCount = countBraces(myString);
 var braceCountZ = countBracesZ(myString);
 var lastCommaIndex = myString.lastIndexOf(",");
 var stringWithoutLastPart = myString.substring(0, lastCommaIndex);
-var jsonfile = joining(stringWithoutLastPart,braceCount,braceCountZ)
-console.log(myString)
+if(braceCount==braceCountZ){
+ var  jsonfile = myString
+} else {
+    var jsonfile = joining(stringWithoutLastPart,braceCount,braceCountZ)
+}
 var jsonReady = JSON.parse(jsonfile)
 var userEventHash = jsonReady.props.initialState.user.userEventHash
 var token = jsonReady.props.initialState.user.profile.token
