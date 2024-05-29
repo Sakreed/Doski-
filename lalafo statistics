@@ -74,13 +74,14 @@ var braceCountZ = countBracesZ(myString);
 var lastCommaIndex = myString.lastIndexOf(",");
 var stringWithoutLastPart = myString.substring(0, lastCommaIndex);
 var jsonfile = joining(stringWithoutLastPart,braceCount,braceCountZ)
+console.log(myString)
 var jsonReady = JSON.parse(jsonfile)
 var userEventHash = jsonReady.props.initialState.user.userEventHash
 var token = jsonReady.props.initialState.user.profile.token
 async function main() {
     const dateStart = '2024-05-22';
     const dateEnd = '2024-05-28';
-    const data = await fetchCallData(dateStart, dateEnd,authorization,userHash);
+    const data = await fetchCallData(dateStart, dateEnd,token,userEventHash);
     const totalCalls = sumCalls(data);
     console.log(`Total calls from ${dateStart} to ${dateEnd}: ${totalCalls}`);
 }
